@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>試題反應理論（IRT）模型詳細介紹</title>
+
+    <!-- 引入 MathJax -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #35424a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* 響應式設計: 平板與手機尺寸 */
+        @media only screen and (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>試題反應理論（IRT）模型詳細介紹</h1>
+    </header>
+
+    <div class="container">
+        <!-- 1PL模型介紹 -->
+        <h2>1PL模型 (Rasch Model)</h2>
+        <p>
+            1PL模型，也被稱為Rasch模型，僅考慮一個參數，即試題的難度。在此模型中，所有試題都被假定具有相同的鑑別度。
+        </p>
+        <ul>
+            <li><strong>試題難度：</strong> 它描述了當受測者的能力為零時，該試題被正確回答的機會。</li>
+            <li>機率計算公式（表達式1）：P(Y_{ij}=1) = 1 / (1 + exp(-(\theta_j - b_i)))</li>
+            <li>機率計算公式（表達式2）：\[ P(Y_{ij}=1) = \frac{1}{1 + \exp(-(\theta_j - b_i))} \]</li>
+        </ul>
+
+        <!-- 2PL模型介紹 -->
+        <h2>2PL模型 (Two-Parameter Logistic Model)</h2>
+        <p>
+            2PL模型包含兩個參數：試題的難度和鑑別度。鑑別度參數能夠衡量試題區分不同能力水平受測者的效果。
+        </p>
+        <ul>
+            <li><strong>試題難度：</strong> 同1PL模型中的定義。</li>
+            <li><strong>鑑別度：</strong> 表示試題區分不同能力水平的能力。一個高鑑別度的試題對於能力較高和較低的受測者有很好的區分度。</li>
+            <li>機率計算公式（表達式1）：P(Y_{ij}=1) = c_i + (1-c_i) * 1 / (1 + exp(a_i(\theta_j - b_i)))</li>
+            <li>機率計算公式（表達式2）：\[ P(Y_{ij}=1) = c_i + (1-c_i) \times \frac{1}{1 + \exp(a_i(\theta_j - b_i))} \]</li>
+        </ul>
+
+        <!-- 3PL模型介紹 -->
+        <h2>3PL模型 (Three-Parameter Logistic Model)</h2>
+        <p>
+            3PL模型在2PL模型的基礎上增加了猜測參數，它表示當受測者的能力值非常低時，其猜測該試題正確答案的機會。
+        </p>
+        <ul>
+            <li><strong>猜測參數：</strong> 表示當受測者的能力極低時，他們依然有機會猜對答案。此參數確保了正確回答的機率永遠不會降到0。</li>
+            <li>機率計算公式（表達式1）：P(Y_{ij}=1) = c_i + (1-c_i) * 1 / (1 + exp(a_i(\theta_j - b_i)))</li>
+            <li>機率計算公式（表達式2）：\[ P(Y_{ij}=1) = c_i + (1-c_i) \times \frac{1}{1 + \exp(a_i(\theta_j - b_i))} \]</li>
+        </ul>
+
+        <!-- 4PL模型介紹 -->
+        <h2>4PL模型 (Four-Parameter Logistic Model)</h2>
+        <p>
+            4PL模型在3PL模型的基礎上引入了上限參數，該參數描述了當受測者的能力遠高於試題難度時，其正確回答的機會的上限。
+        </p>
+        <ul>
+            <li><strong>上限參數：</strong> 表示試題回答正確的機會上限。當受測者能力極高時，其正確回答的機會不會超過此上限。</li>
+            <li>機率計算公式（表達式1）：P(Y_{ij}=1) = c_i + (d_i-c_i) * 1 / (1 + exp(a_i(\theta_j - b_i)))</li>
+            <li>機率計算公式（表達式2）：\[ P(Y_{ij}=1) = c_i + (d_i-c_i) \times \frac{1}{1 + \exp(a_i(\theta_j - b_i))} \]</li>
+        </ul>
+
+        <!-- 5PL模型介紹 -->
+        <h2>5PL模型 (Five-Parameter Logistic Model)</h2>
+        <p>
+            5PL模型在4PL模型的基礎上引入了不對稱參數，它能夠控制機率曲線的不對稱性，使其更符合實際情況。
+        </p>
+        <ul>
+            <li><strong>不對稱參數：</strong> 控制機率曲線的不對稱性。通常用於模擬特定情況下的試題反應，如測試兩極端能力的受測者。</li>
+            <li>機率計算公式（表達式1）：P(Y_{ij}=1) = c_i + (d_i-c_i) * 1 / (1 + exp(a_i(\theta_j - b_i)e_i))</li>
+            <li>機率計算公式（表達式2）：\[ P(Y_{ij}=1) = c_i + (d_i-c_i) \times \frac{1}{1 + \exp(a_i(\theta_j - b_i)e_i)} \]</li>
+        </ul>
+    </div>
+</body>
+
+</html>
